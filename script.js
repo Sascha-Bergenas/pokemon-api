@@ -3,7 +3,7 @@
 //   .then((data) => console.log(data.weight))
 //   .catch((error) => console.error(error));
 
-async function fetchData() {
+async function getPokemonByNumber() {
   try {
     const pokemonId = document.getElementById("pokemonId").value;
 
