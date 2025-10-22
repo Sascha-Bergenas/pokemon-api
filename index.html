@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1>Pokémon by dex No.</h1>
+        <input type="number" id="pokemonId" placeholder="Write a number" />
+        <button onclick="fetchData()" id="btn">Find that Pokémon!</button>
+        <img
+          id="pokemonSprites"
+          src=""
+          alt="pokemonSprites"
+          style="display: none"
+        />
+        <p id="pokemonNo" style="display: none"></p>
+        <p id="pokemonName" style="display: none"></p>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
