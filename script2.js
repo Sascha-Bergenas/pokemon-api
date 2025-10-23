@@ -32,6 +32,6 @@ function getPokemonByNumber() {
       pokemonNo.style.display = "block";
     })
     .catch((err) => {
-      console.error("något gick fel", err);
+      console.error("Could not find pokémon", err);
     });
 }
