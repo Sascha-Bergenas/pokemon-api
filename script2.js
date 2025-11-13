@@ -39,7 +39,7 @@ function getPokemonByNumber() {
       container.appendChild(shinyButton);
     })
     .catch((err) => {
-      console.error("något gick fel", err);
+      console.error("Could not find pokémon", err);
     });
 }
 
