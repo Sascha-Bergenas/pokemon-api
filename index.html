@@ -17,15 +17,21 @@
       <div class="container">
         <h1>Pokémon by dex No.</h1>
         <input type="number" id="pokemonId" placeholder="Write a number" />
-        <button onclick="getPokemonByNumber()" id="btn">
-          Find that Pokémon!
-        </button>
-        <img
-          id="pokemonSprites"
-          src=""
-          alt="pokemonSprites"
-          style="display: none"
-        />
+        <button id="btn">Find that Pokémon!</button>
+        <div class="pokemonContainer">
+          <img
+            id="pokemonSprites"
+            src=""
+            alt="pokemonSprites"
+            style="display: none"
+          />
+          <img
+            id="pokemonShinySprites"
+            src=""
+            alt="pokemonShinySprites"
+            style="display: none"
+          />
+        </div>
         <p id="pokemonNo" style="display: none"></p>
         <p id="pokemonName" style="display: none"></p>
       </div>
