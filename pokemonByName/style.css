@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Aldrich&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Aldrich", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("./img/thimo-pedersen-dip9IIwUK6w-unsplash.jpg");
+  background-size: cover;
+  flex-direction: column;
+}
+h1 {
+  z-index: 1000;
+  color: yellow;
+  text-shadow: 2px 2px 0 rgb(3, 3, 153), -2px 2px 0 rgb(4, 4, 146),
+    2px -2px 0 rgb(2, 2, 144), -2px -2px 0 rgb(2, 2, 123);
+}
+.container {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: rgba(229, 229, 250, 0.8);
+  border: 2px solid rgb(125, 102, 125);
+  box-shadow: 0px 20px 70px 50px mistyrose;
+  min-height: 440px;
+  min-width: 400px;
+  border-radius: 5px;
+  margin: 0 0 5px 0;
+}
+button {
+  margin: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid gray;
+  background-color: mistyrose;
+}
+button:hover {
+  background-color: lavender;
+  cursor: pointer;
+}
+input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid gray;
+}
+.sprites {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem;
+}
+li {
+  list-style: none;
+  margin: 1rem;
+}
