@@ -1,9 +1,9 @@
 const container = document.querySelector(".container");
 const spriteImage = document.querySelector("#pokemonSprites");
 const spriteShinyImage = document.querySelector("#pokemonShinySprites");
+const types = document.querySelector(".types");
 
-async function pokemonApi() {
-  const pokemonName = document.querySelector("input").value.toLocaleLowerCase();
+async function pokemonApi(pokemonName) {
   const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
   try {
     const response = await fetch(url);
@@ -34,8 +34,25 @@ const renderPokemonTypes = (data) => {
     typeListItem.appendChild(typeImg);
   });
   typeOutput.textContent = "Type:";
-  container.appendChild(typeOutput);
-  container.appendChild(typeList);
+  types.appendChild(typeOutput);
+  types.appendChild(typeList);
+};
+
+const gameApperences = (data) => {
+  const apperences = document.querySelector(".apperences");
+  apperences.innerHTML = "";
+  const apperencesOutput = document.createElement("p");
+  apperences.prepend(apperencesOutput);
+  apperencesOutput.textContent = "Apperences:";
+  const gameList = document.createElement("ul");
+  gameList.id = "gameList";
+
+  data.game_indices.forEach((item) => {
+    const gameListItem = document.createElement("li");
+    gameListItem.textContent = item.version.name;
+    gameList.appendChild(gameListItem);
+  });
+  apperences.appendChild(gameList);
 };
 const removeOldList = () => {
   const oldList = document.querySelector("#typeList");
@@ -53,6 +70,16 @@ const pokemonSprites = (data) => {
   spriteShinyImage.style.display = "block";
 };
 
+async function randomisePokemon(pokemonData) {
+  if (pokemonData.results.length === 0) {
+    alert("no pokemon");
+  }
+  const randomIndex = Math.floor(Math.random() * pokemonData.results.length);
+  const pokemon = pokemonData.results[randomIndex];
+  console.log(pokemon);
+  return pokemon.name;
+}
+
 const inputPokemon = document.createElement("input");
 inputPokemon.id = "inputen";
 const searchButton = document.createElement("button");
@@ -60,11 +87,32 @@ const typeOutput = document.createElement("p");
 container.prepend(searchButton);
 searchButton.textContent = "Find That Pokémon!";
 container.prepend(inputPokemon);
+const randomButton = document.createElement("button");
+randomButton.textContent = "Random!";
+container.appendChild(randomButton);
 
 searchButton.addEventListener("click", async () => {
+  const pokemonName = document.querySelector("input").value.toLocaleLowerCase();
   removeOldList();
-  const data = await pokemonApi();
+  if (pokemonName === "") return;
+
+  const data = await pokemonApi(pokemonName);
   pokemonSprites(data);
   renderPokemonTypes(data);
+  gameApperences(data);
   inputPokemon.value = "";
+});
+
+randomButton.addEventListener("click", async () => {
+  inputPokemon.value = "";
+
+  removeOldList();
+  const data = await pokemonApi("");
+  const randomPokemonName = await randomisePokemon(data);
+  console.log(randomPokemonName);
+  const data2 = await pokemonApi(randomPokemonName);
+  console.log(data2);
+  pokemonSprites(data2);
+  renderPokemonTypes(data2);
+  gameApperences(data2);
 });
